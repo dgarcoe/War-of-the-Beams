@@ -8,8 +8,8 @@ import com.dgarcoe.warofthebeams.WarBeamsGame
 class MainMenuState(game: WarBeamsGame) : WarBeamsGameState(game) {
 
     override fun startGame():Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-
+        game.currentState = game.playingState
+        game.startNewScreen(game.playingScreen)
         return 0
     }
 

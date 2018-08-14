@@ -38,8 +38,24 @@ class WarBeamsGame : Game() {
         setScreen(mainMenuScreen)
     }
 
-    override fun setScreen (screen:Screen) {
+    fun startNewScreen(screen:Screen) {
         currentScreen = screen
         super.setScreen(screen)
+    }
+
+    fun startGame() {
+        currentState.startGame()
+    }
+
+    fun endGame() {
+        currentState.endGame()
+    }
+
+    fun goOptionsMenu() {
+        currentState.goOptionsMenu()
+    }
+
+    fun goMainMenu() {
+        currentState.goMainMenu()
     }
 }

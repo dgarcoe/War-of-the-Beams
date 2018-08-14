@@ -1,13 +1,44 @@
 package com.dgarcoe.warofthebeams.screens
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.InputProcessor
 import com.badlogic.gdx.Screen
+import com.badlogic.gdx.graphics.GL20
 import com.dgarcoe.warofthebeams.WarBeamsGame
 
 /**
  * Created by Daniel on 14/08/2018.
  */
 class PlayingScreen (game:WarBeamsGame): Screen, InputProcessor {
+
+    override fun hide() {
+
+    }
+
+    override fun show() {
+
+    }
+
+    override fun render(delta: Float) {
+        Gdx.gl.glClearColor(1f, 0f, 0f, 1f)
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
+    }
+
+    override fun pause() {
+
+    }
+
+    override fun resume() {
+
+    }
+
+    override fun resize(width: Int, height: Int) {
+
+    }
+
+    override fun dispose() {
+
+    }
 
     override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -38,34 +69,6 @@ class PlayingScreen (game:WarBeamsGame): Screen, InputProcessor {
     }
 
     override fun touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun hide() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun show() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun render(delta: Float) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun pause() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun resume() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun resize(width: Int, height: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun dispose() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

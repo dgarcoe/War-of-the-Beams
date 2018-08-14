@@ -6,8 +6,6 @@ import com.badlogic.gdx.Screen
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.Stage
-import com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeOut
-import com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence
 import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.ui.Table
@@ -23,12 +21,12 @@ class MainMenuScreen (val game: WarBeamsGame, val skin: Skin): Screen, InputProc
     val stage:Stage = Stage()
     val table:Table = Table(skin)
 
-    fun initStage() {
+    private fun initStage() {
         table.setFillParent(true)
         Gdx.input.inputProcessor = stage
     }
 
-    fun setStage() {
+    private fun setStage() {
 
         val heading = Label("War of the Beams", skin, "white")
         heading.setFontScale(3f)
@@ -36,7 +34,7 @@ class MainMenuScreen (val game: WarBeamsGame, val skin: Skin): Screen, InputProc
         val buttonStartGame = TextButton("Singleplayer", skin, "default")
         buttonStartGame.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
-               println("Button clicked!!!!")
+               game.startGame()
             }
         })
         buttonStartGame.label.setFontScale(2f)
@@ -48,7 +46,7 @@ class MainMenuScreen (val game: WarBeamsGame, val skin: Skin): Screen, InputProc
 
             }
         })
-        buttonSettings.getLabel().setFontScale(2f)
+        buttonSettings.label.setFontScale(2f)
         buttonSettings.pad(15f)
 
         val buttonExit = TextButton("Exit", skin)
