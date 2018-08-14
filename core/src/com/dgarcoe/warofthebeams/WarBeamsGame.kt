@@ -5,6 +5,7 @@ import com.badlogic.gdx.Game
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Screen
 import com.badlogic.gdx.graphics.GL20
+import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.dgarcoe.warofthebeams.gamestates.WarBeamsGameState
 import com.dgarcoe.warofthebeams.gamestates.MainMenuState
 import com.dgarcoe.warofthebeams.gamestates.PlayingState
@@ -16,23 +17,24 @@ class WarBeamsGame : Game() {
 
     private val TAG = "WarBeamsGame"
 
-    var currentState : WarBeamsGameState
-    var currentScreen : Screen
-
+    lateinit var currentState : WarBeamsGameState
+    lateinit var currentScreen : Screen
 
     val mainMenuState : MainMenuState = MainMenuState(this)
-    val mainMenuScreen : MainMenuScreen = MainMenuScreen(this)
+    lateinit var mainMenuScreen : MainMenuScreen
 
     val playingState : PlayingState = PlayingState(this)
-    val playingScreen : PlayingScreen = PlayingScreen(this)
+    lateinit var playingScreen : PlayingScreen
 
-    init {
-        currentState = mainMenuState
-        currentScreen = mainMenuScreen
-
-    }
+    lateinit var skin:Skin
 
     override fun create() {
+        skin = Skin(Gdx.files.internal("android/assets/skin/metal/skin/metal-ui.json"))
+        mainMenuScreen = MainMenuScreen(this,skin)
+        playingScreen = PlayingScreen(this)
+
+        currentState = mainMenuState
+        currentScreen = mainMenuScreen
         setScreen(mainMenuScreen)
     }
 
