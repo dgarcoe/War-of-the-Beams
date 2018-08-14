@@ -6,6 +6,8 @@ import com.badlogic.gdx.Screen
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.Stage
+import com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeOut
+import com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence
 import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.ui.Table
@@ -29,19 +31,40 @@ class MainMenuScreen (val game: WarBeamsGame, val skin: Skin): Screen, InputProc
     fun setStage() {
 
         val heading = Label("War of the Beams", skin, "white")
-        heading.setFontScale(4f)
+        heading.setFontScale(3f)
 
-        val buttonSingle = TextButton("Singleplayer", skin, "default")
-        buttonSingle.addListener(object : ClickListener() {
+        val buttonStartGame = TextButton("Singleplayer", skin, "default")
+        buttonStartGame.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
                println("Button clicked!!!!")
             }
         })
-        buttonSingle.label.setFontScale(3f)
-        buttonSingle.pad(15f)
+        buttonStartGame.label.setFontScale(2f)
+        buttonStartGame.pad(15f)
+
+        val buttonSettings = TextButton("Settings", skin, "default")
+        buttonSettings.addListener(object : ClickListener() {
+            override fun clicked(event: InputEvent?, x: Float, y: Float) {
+
+            }
+        })
+        buttonSettings.getLabel().setFontScale(2f)
+        buttonSettings.pad(15f)
+
+        val buttonExit = TextButton("Exit", skin)
+        buttonExit.addListener(object : ClickListener() {
+            override fun clicked(event: InputEvent?, x: Float, y: Float) {
+                //stage.addAction(sequence(fadeOut(0.5f), run(Runnable { Gdx.app.exit() })))
+                Gdx.app.exit()
+            }
+        })
+        buttonExit.label.setFontScale(2f)
+        buttonExit.pad(15f)
 
         table.add(heading).spaceBottom(100f).expandX().row()
-        table.add(buttonSingle).width(500f).height(100f).spaceBottom(15f).row()
+        table.add(buttonStartGame).width(500f).height(100f).spaceBottom(15f).row()
+        table.add(buttonSettings).width(500f).height(100f).spaceBottom(15f).row()
+        table.add(buttonExit).width(500f).height(100f).spaceBottom(15f).row()
 
         stage.addActor(table)
     }
